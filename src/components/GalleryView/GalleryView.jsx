@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Button from '../Button/Button';
 import ImageGallery from '../ImageGallery/ImageGallery';
 import Loader from '../Loader/Loader';
+import Error from '../Error/Error';
 
 const AUTH_KEY = '29946352-1a4291eb7954147c8b1f721f5';
 
@@ -122,7 +123,7 @@ export class GalleryView extends Component {
     }
 
     if (status === 'rejected') {
-      return <div>Ooops, something went wrong</div>;
+      return <Error />;
     }
   }
 }

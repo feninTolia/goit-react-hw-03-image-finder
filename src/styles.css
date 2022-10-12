@@ -238,3 +238,7 @@ img {
   width: 648px;
   height: 648px;
 }
+
+.error-ui {
+  margin: 0 auto;
+}
