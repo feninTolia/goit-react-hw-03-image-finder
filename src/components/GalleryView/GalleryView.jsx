@@ -4,8 +4,8 @@ import Button from '../Button/Button';
 import ImageGallery from '../ImageGallery/ImageGallery';
 import Loader from '../Loader/Loader';
 import Error from '../Error/Error';
-
-const AUTH_KEY = '29946352-1a4291eb7954147c8b1f721f5';
+import Idle from 'components/Idle/Idle';
+import { pixabayFetchAPI } from '../services/pixabay.service';
 
 export class GalleryView extends Component {
   state = {
@@ -34,18 +34,7 @@ export class GalleryView extends Component {
     if (prevQuery !== nextQuery) {
       this.setState({ status: 'pending', page: 1, loadMoreBtn: true });
 
-      fetch(
-        `https://pixabay.com/api/?q=${this.state.query}&page=${this.state.page}&key=${AUTH_KEY}&image_type=photo&orientation=horizontal&per_page=12`
-      )
-        .then(response => {
-          if (response.ok) {
-            return response.json();
-          }
-
-          return Promise.reject(
-            new Error('Немає картинок за таким запитом =(')
-          );
-        })
+      pixabayFetchAPI(nextQuery, nextPage)
         .then(photos => {
           this.setState({ photos: photos.hits, status: 'resolved' });
         })
@@ -53,18 +42,7 @@ export class GalleryView extends Component {
     }
 
     if (prevPage < nextPage) {
-      fetch(
-        `https://pixabay.com/api/?q=${this.state.query}&page=${this.state.page}&key=${AUTH_KEY}&image_type=photo&orientation=horizontal&per_page=12`
-      )
-        .then(response => {
-          if (response.ok) {
-            return response.json();
-          }
-
-          return Promise.reject(
-            new Error('Більше немає картинок за таким запитом =(')
-          );
-        })
+      pixabayFetchAPI(nextQuery, nextPage)
         .then(newPhotos => {
           if (newPhotos.hits.length < 12) {
             this.setState({ loadMoreBtn: false });
@@ -86,27 +64,15 @@ export class GalleryView extends Component {
     const { status } = this.state;
 
     if (status === 'idle') {
-      return (
-        <img
-          src="https://media.tenor.com/nEP6ovplEd8AAAAi/so-really.gif"
-          alt="confused man"
-          className="idle-gif"
-        />
-      );
+      return <Idle />;
+    }
+
+    if (status === 'resolved' && this.state.photos.length === 0) {
+      return <Idle />;
     }
 
     if (status === 'pending') {
       return <Loader />;
-    }
-
-    if (status === 'resolved' && this.state.photos.length === 0) {
-      return (
-        <img
-          src="https://media.tenor.com/nEP6ovplEd8AAAAi/so-really.gif"
-          alt="confused man"
-          className="idle-gif"
-        />
-      );
     }
 
     if (status === 'resolved') {

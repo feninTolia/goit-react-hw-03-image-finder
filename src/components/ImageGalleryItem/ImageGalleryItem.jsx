@@ -8,7 +8,6 @@ export class ImageGalleryItem extends Component {
   };
 
   onEscBtnClick = evt => {
-    console.log('leak');
     if (evt.key === 'Escape') {
       this.setState({ modal: false });
     }
