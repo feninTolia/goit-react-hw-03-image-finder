@@ -4,7 +4,7 @@ import React from 'react';
 const ImageGallery = ({ photos, onFullImgLoad }) => {
   return (
     <div>
-      <ul className="ImageGallery" onLoad={() => onFullImgLoad()}>
+      <ul className="ImageGallery">
         {photos.map(el => (
           <ImageGalleryItem
             key={el.id}

@@ -76,10 +76,6 @@ export class GalleryView extends Component {
     }
   }
 
-  // handleFullImgLoad = () => {
-  //   console.log('loaded');
-  // };
-
   handleLoadMoreBtnClick = () => {
     this.setState(prevState => ({ page: prevState.page + 1 }));
   };
