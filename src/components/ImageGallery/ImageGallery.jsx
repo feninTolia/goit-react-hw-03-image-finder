@@ -10,6 +10,7 @@ const ImageGallery = ({ photos }) => {
             key={el.id}
             photoSrc={el.webformatURL}
             photoAlt={el.tags}
+            largeSrc={el.largeImageURL}
           />
         ))}
       </ul>
