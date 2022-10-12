@@ -83,7 +83,7 @@ export class GalleryView extends Component {
   render() {
     const { status } = this.state;
 
-    if (status === 'idle' || this.state.photos.length === 0) {
+    if (status === 'idle') {
       return (
         <img
           src="https://media.tenor.com/nEP6ovplEd8AAAAi/so-really.gif"
@@ -95,6 +95,16 @@ export class GalleryView extends Component {
 
     if (status === 'pending') {
       return <Loader />;
+    }
+
+    if (status === 'resolved' && this.state.photos.length === 0) {
+      return (
+        <img
+          src="https://media.tenor.com/nEP6ovplEd8AAAAi/so-really.gif"
+          alt="confused man"
+          className="idle-gif"
+        />
+      );
     }
 
     if (status === 'resolved') {
@@ -109,6 +119,10 @@ export class GalleryView extends Component {
           )}
         </>
       );
+    }
+
+    if (status === 'rejected') {
+      return <div>Ooops, something went wrong</div>;
     }
   }
 }
