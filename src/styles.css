@@ -225,3 +225,16 @@ img {
 .loader-item {
   flex-basis: 320px;
 }
+
+/*
+* Стили визуального компонента во время Idle
+*/
+
+.idle-gif {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  translate: -50% 0;
+  width: 648px;
+  height: 648px;
+}

@@ -1,10 +1,10 @@
 import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
 import React from 'react';
 
-const ImageGallery = ({ photos }) => {
+const ImageGallery = ({ photos, onFullImgLoad }) => {
   return (
     <div>
-      <ul className="ImageGallery">
+      <ul className="ImageGallery" onLoad={() => onFullImgLoad()}>
         {photos.map(el => (
           <ImageGalleryItem
             key={el.id}

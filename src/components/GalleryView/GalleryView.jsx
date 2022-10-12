@@ -76,6 +76,10 @@ export class GalleryView extends Component {
     }
   }
 
+  // handleFullImgLoad = () => {
+  //   console.log('loaded');
+  // };
+
   handleLoadMoreBtnClick = () => {
     this.setState(prevState => ({ page: prevState.page + 1 }));
   };
@@ -83,18 +87,12 @@ export class GalleryView extends Component {
   render() {
     const { status } = this.state;
 
-    if (status === 'idle') {
+    if (status === 'idle' || this.state.photos.length === 0) {
       return (
         <img
           src="https://media.tenor.com/nEP6ovplEd8AAAAi/so-really.gif"
-          alt="Computer man"
-          style={{
-            position: 'absolute',
-            bottom: 0,
-            left: '30%',
-            width: '648px',
-            height: '648px',
-          }}
+          alt="confused man"
+          className="idle-gif"
         />
       );
     }
@@ -106,8 +104,11 @@ export class GalleryView extends Component {
     if (status === 'resolved') {
       return (
         <>
-          <ImageGallery photos={this.state.photos} />
-          {this.state.loadMoreBtn && (
+          <ImageGallery
+            photos={this.state.photos}
+            onFullImgLoad={this.handleFullImgLoad}
+          />
+          {this.state.loadMoreBtn && this.state.photos.length !== 0 && (
             <Button onLoadMoreBtnClick={this.handleLoadMoreBtnClick} />
           )}
         </>
