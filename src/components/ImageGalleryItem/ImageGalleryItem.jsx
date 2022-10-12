@@ -1,10 +1,10 @@
 import React from 'react';
 
-const ImageGalleryItem = () => {
+const ImageGalleryItem = ({ photoSrc, photoAlt }) => {
   return (
     <>
-      <li className="gallery-item">
-        <img src="" alt="" />
+      <li className="ImageGalleryItem">
+        <img src={photoSrc} alt={photoAlt} className="ImageGalleryItem-image" />
       </li>
     </>
   );
