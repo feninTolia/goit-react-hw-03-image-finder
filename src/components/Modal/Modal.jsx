@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export class Modal extends Component {
   componentWillUnmount() {
@@ -17,5 +18,11 @@ export class Modal extends Component {
     );
   }
 }
+
+Modal.propTypes = {
+  handleCloseModal: PropTypes.func,
+  largeSrc: PropTypes.string,
+  escEventUnmount: PropTypes.func,
+};
 
 export default Modal;

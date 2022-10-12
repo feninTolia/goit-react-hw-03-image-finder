@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Button from '../Button/Button';
 import ImageGallery from '../ImageGallery/ImageGallery';
 import Loader from '../Loader/Loader';
@@ -127,5 +128,10 @@ export class GalleryView extends Component {
     }
   }
 }
+
+GalleryView.propTypes = {
+  handleModalData: PropTypes.func,
+  query: PropTypes.string,
+};
 
 export default GalleryView;

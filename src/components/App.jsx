@@ -6,9 +6,6 @@ export class App extends Component {
   state = {
     photosData: null,
     query: '',
-    // page: null,
-    // LoadMoreBtn: null,
-    // error: null,
   };
 
   handleFormSubmit = query => {
@@ -27,7 +24,6 @@ export class App extends Component {
           query={this.state.query}
           handleModalData={this.handleModalData}
         />
-        {/* <Modal /> */}
       </div>
     );
   }

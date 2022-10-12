@@ -1,17 +1,4 @@
-// const ImageGalleryItem = ({ photoSrc, photoAlt }) => {
-//   handleItemClic = () => {};
-
-//   return (
-//     <>
-//       <li onClick={this.handleItemClick} className="ImageGalleryItem">
-//         <img src={photoSrc} alt={photoAlt} className="ImageGalleryItem-image" />
-//       </li>
-//     </>
-//   );
-// };
-
-// export default ImageGalleryItem;
-
+import PropTypes from 'prop-types';
 import Modal from 'components/Modal/Modal';
 import React, { Component } from 'react';
 
@@ -62,5 +49,11 @@ export class ImageGalleryItem extends Component {
     );
   }
 }
+
+ImageGalleryItem.propTypes = {
+  photoSrc: PropTypes.string,
+  photoAlt: PropTypes.string,
+  largeSrc: PropTypes.string,
+};
 
 export default ImageGalleryItem;

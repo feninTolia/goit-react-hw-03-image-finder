@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 export class Button extends Component {
@@ -13,5 +14,9 @@ export class Button extends Component {
     );
   }
 }
+
+Button.propTypes = {
+  onLoadMoreBtnClick: PropTypes.func,
+};
 
 export default Button;
