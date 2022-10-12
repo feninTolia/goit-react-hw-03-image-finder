@@ -20,12 +20,23 @@ export class ImageGalleryItem extends Component {
     modal: false,
   };
 
-  handleItemClic = () => {
-    this.setState({ modal: true });
+  onEscBtnClick = evt => {
+    console.log('leak');
+    if (evt.key === 'Escape') {
+      this.setState({ modal: false });
+    }
   };
 
-  handleCloseModal = () => {
-    this.setState({ modal: false });
+  handleItemClic = () => {
+    this.setState({ modal: true });
+
+    window.addEventListener('keydown', this.onEscBtnClick);
+  };
+
+  handleCloseModal = evt => {
+    if (evt.target.className === 'Overlay') {
+      this.setState({ modal: false });
+    }
   };
 
   render() {
@@ -41,7 +52,11 @@ export class ImageGalleryItem extends Component {
           />
         </li>
         {this.state.modal && (
-          <Modal largeSrc={largeSrc} handleCloseModal={this.handleCloseModal} />
+          <Modal
+            largeSrc={largeSrc}
+            handleCloseModal={this.handleCloseModal}
+            escEventUnmount={this.onEscBtnClick}
+          />
         )}
       </>
     );

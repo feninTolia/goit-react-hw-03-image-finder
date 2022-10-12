@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
 export class Modal extends Component {
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.props.escEventUnmount);
+  }
+
   render() {
     return (
       <>
