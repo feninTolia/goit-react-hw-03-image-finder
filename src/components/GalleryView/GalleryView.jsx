@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Button from '../Button/Button';
+import Button from '../UI/Button/Button';
 import ImageGallery from '../ImageGallery/ImageGallery';
-import Loader from '../Loader/Loader';
-import Error from '../Error/Error';
+import Loader from '../UI/Loader/Loader';
+import Error from '../UI/Error/Error';
 import Idle from 'components/Idle/Idle';
-import { pixabayFetchAPI } from '../services/pixabay.service';
+import { pixabayFetchAPI } from '../../API/pixabay.service';
 
 export class GalleryView extends Component {
   state = {
@@ -83,7 +83,9 @@ export class GalleryView extends Component {
             onFullImgLoad={this.handleFullImgLoad}
           />
           {this.state.loadMoreBtn && this.state.photos.length !== 0 && (
-            <Button onLoadMoreBtnClick={this.handleLoadMoreBtnClick} />
+            <Button onLoadMoreBtnClick={this.handleLoadMoreBtnClick}>
+              Load more
+            </Button>
           )}
         </>
       );

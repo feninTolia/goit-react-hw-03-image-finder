@@ -9,7 +9,7 @@ export class Button extends Component {
         className="Button"
         onClick={() => this.props.onLoadMoreBtnClick()}
       >
-        Load More
+        {this.props.children}
       </button>
     );
   }
